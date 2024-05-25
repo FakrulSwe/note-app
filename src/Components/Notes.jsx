@@ -5,17 +5,10 @@ import {v4 as uuid} from 'uuid'
 import Note from './Note'
 
 
+
 const Notes = () => {
     const data = JSON.parse(localStorage.getItem("Notes"))
-    // Pagination
-    const [currentPage, setCurrentPage] = useState(1)
-    const recordsPerpage = 5;
-    const lastIndex = currentPage * recordsPerpage;
-    const firstIndex = lastIndex - recordsPerpage;
-    const records = data.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(data.length/recordsPerpage);
-    const numbers = [...Array(npage + 1).keys()].slice(1);
-    // --------
+
     const [inputTitle, setInputTitle] = useState('')
     const [inputText, setInputText] = useState('')
     const [notes, setNotes] = useState([])
@@ -62,6 +55,16 @@ const Notes = () => {
     useEffect(() =>{
         window.localStorage.setItem("Notes", JSON.stringify(notes))
     },[notes])
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1)
+    const recordsPerpage = 5;
+    const lastIndex = currentPage * recordsPerpage;
+    const firstIndex = lastIndex - recordsPerpage;
+    const records = data.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(data.length/recordsPerpage);
+    const numbers = [...Array(npage + 1).keys()].slice(1);
+    // --------
 
   return (
     <div>
