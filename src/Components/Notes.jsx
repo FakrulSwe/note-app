@@ -71,7 +71,7 @@ const Notes = () => {
         <div className='notes'>
         {
             // records
-            records.map((note) => (
+            notes.map((note) => (
                 editToggle === note.id ? 
                 <CreateNote
                 inputTitle = {inputTitle}
