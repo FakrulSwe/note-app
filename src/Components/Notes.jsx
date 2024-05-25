@@ -72,7 +72,7 @@ const Notes = () => {
         <div className='notes'>
         {
             // records
-            notes.map((note) => (
+            records.map((note) => (
                 editToggle === note.id ? 
                 <CreateNote
                 key={note.id}
@@ -132,7 +132,7 @@ const Notes = () => {
             </nav>
         </div>
         <p className='text-warning fw-bold font-light paginationbottom mt-2'>Note: Please double-click the &nbsp;
-        <span className='text-danger'> Save & Delete </span> &nbsp; button when using it</p>
+        <span className='text-danger'> Save </span> &nbsp; button while using it</p>
     </div>
   )
   function prePage(){
