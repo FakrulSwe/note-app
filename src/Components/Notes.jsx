@@ -6,6 +6,15 @@ import Note from './Note'
 
 
 const Notes = () => {
+    const data = JSON.parse(localStorage.getItem("Notes"))
+    const [currentPage, setCurrentPage] = useState(1)
+    const recordsPerpage = 5;
+    const lastIndex = currentPage * recordsPerpage;
+    const firstIndex = lastIndex - recordsPerpage;
+    const records = data.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(data.length/recordsPerpage);
+    const numbers = [...Array(npage + 1).keys()].slice(1);
+    
     const [inputTitle, setInputTitle] = useState('')
     const [inputText, setInputText] = useState('')
     const [notes, setNotes] = useState([])
@@ -41,9 +50,9 @@ const Notes = () => {
         const newNotes = notes.filter(n => n.id !== id)
         setNotes(newNotes)
     }
-
+    
     useEffect(() =>{
-        const data = JSON.parse(localStorage.getItem("Notes"))
+        
         if(data){
             setNotes(data)
         }
@@ -52,10 +61,13 @@ const Notes = () => {
     useEffect(() =>{
         window.localStorage.setItem("Notes", JSON.stringify(notes))
     },[notes])
+
   return (
-    <div className='notes'>
+    <div>
+        <div className='notes'>
         {
-            notes.map((note) => (
+            // records
+            records.map((note) => (
                 editToggle === note.id ? 
                 <CreateNote
                 inputTitle = {inputTitle}
@@ -65,6 +77,7 @@ const Notes = () => {
                 saveHandler = {saveHandler  }
                 />
                 :
+                
                 <Note 
                     key={note.id}
                     id={note.id}
@@ -75,9 +88,11 @@ const Notes = () => {
                 >
 
                 </Note>
+                
             ))
-        }
-        {
+
+            }
+            {
             editToggle === null ?
             <CreateNote
             inputTitle = {inputTitle}
@@ -86,9 +101,46 @@ const Notes = () => {
             setInputText = {setInputText}
             saveHandler = {saveHandler  }
             /> : <></>
-        }
+            }
+        </div>
+        <div className='mt-4 paginationbottom'>
+            <nav>
+                <ul className='pagination'>
+                    <li className='page-item'>
+                        <a href="#" className='page-link'
+                        onClick={prePage}>Prev</a>
+                    </li>
+                    {
+                        numbers.map((n, i) => (
+                            <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
+                                <a href="#" className='page-link'
+                                onClick={() => changeCPage(n)}>{n}</a>
+                            </li>
+                        ))
+                    }
+                    <li className='page-item'>
+                        <a href="#" className='page-link'
+                        onClick={nextPage}>Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <p className='text-warning fw-bold font-light paginationbottom mt-2'>Note: Please double-click the &nbsp;<span className='text-danger'> Save </span> &nbsp; button when using it</p>
     </div>
   )
+  function prePage(){
+    if(currentPage !== 1) {
+        setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCPage(id){
+    setCurrentPage(id);
+  }
+  function nextPage(id){
+    if(currentPage !== npage){
+        setCurrentPage(currentPage + 1)
+    }
+  }
 }
 
 export default Notes

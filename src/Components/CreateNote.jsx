@@ -7,7 +7,14 @@ const CreateNote = ({inputTitle, inputText, setInputText, setInputTitle, saveHan
   return (
     <div className='note'>
         <p className='fs-5'>Title</p>
-        <textarea className='fs-6'
+        <input 
+        type="text" 
+        placeholder='Type...'
+        value={inputTitle}
+        onChange={(e) => setInputTitle(e.target.value)}
+        maxLength={25}
+        />
+        {/* <textarea className='fs-6'
         cols={10}
         rows={5}
         placeholder='Type...'
@@ -15,7 +22,7 @@ const CreateNote = ({inputTitle, inputText, setInputText, setInputTitle, saveHan
         onChange={(e) => setInputTitle(e.target.value)}
         maxLength={25}
         >
-        </textarea>
+        </textarea> */}
         <p className='fs-5'>Description</p>
         <textarea className='fs-6'
         cols={10}

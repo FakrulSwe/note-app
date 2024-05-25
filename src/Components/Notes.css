@@ -23,11 +23,21 @@
 
 .note textarea{
     white-space: pre-wrap;
+    border-radius: 8px;
     background: transparent;
-    border: none;
-    color: #fff;
+    border: 1.5px solid rgb(255, 255, 255);
+    /* border: none; */
+    color: #dcd8d8;
     resize: none;
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.note input{
+    background: transparent;
+    color: #dcd8d8;
+    white-space: pre-wrap;
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 4px;
 }
 
 .note textarea:focus{
@@ -35,7 +45,10 @@
 }
 
 .note textarea::placeholder{
-    color: #fff;
+    color: #c1c1c1;
+}
+.note input::placeholder{
+    color: #c1c1c1;
 }
 
 .note_save{
@@ -53,4 +66,9 @@
     background: #ffffff;
     border: 1.5px solid #fff;
     color: #4b1589;
+}
+
+.paginationbottom{
+    display: flex;
+    justify-content: center;
 }
