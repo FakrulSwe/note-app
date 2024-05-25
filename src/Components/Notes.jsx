@@ -57,13 +57,14 @@ const Notes = () => {
     },[notes])
 
     // Pagination
-    // const [currentPage, setCurrentPage] = useState(1)
-    // const recordsPerpage = 5;
-    // const lastIndex = currentPage * recordsPerpage;
-    // const firstIndex = lastIndex - recordsPerpage;
-    // // const records = data.slice(firstIndex, lastIndex);
-    // const npage = Math.ceil(data.length/recordsPerpage);
-    // const numbers = [...Array(npage + 1).keys()].slice(1);
+    const [currentPage, setCurrentPage] = useState(1)
+    const recordsPerpage = 5;
+    const lastIndex = currentPage * recordsPerpage;
+    const firstIndex = lastIndex - recordsPerpage;
+    const records = data.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(data.length/recordsPerpage);
+    const numbers = [...Array(npage + 1).keys()].slice(1);
+    console.log(records);
     // --------
 
   return (
@@ -74,6 +75,7 @@ const Notes = () => {
             notes.map((note) => (
                 editToggle === note.id ? 
                 <CreateNote
+                key={note.id}
                 inputTitle = {inputTitle}
                 inputText = {inputText}
                 setInputTitle = {setInputTitle}
@@ -107,7 +109,7 @@ const Notes = () => {
             /> : <></>
             }
         </div>
-        {/* <div className='mt-4 paginationbottom'>
+        <div className='mt-4 paginationbottom'>
             <nav>
                 <ul className='pagination'>
                     <li className='page-item'>
@@ -130,22 +132,22 @@ const Notes = () => {
             </nav>
         </div>
         <p className='text-warning fw-bold font-light paginationbottom mt-2'>Note: Please double-click the &nbsp;
-        <span className='text-danger'> Save & Delete </span> &nbsp; button when using it</p> */}
+        <span className='text-danger'> Save & Delete </span> &nbsp; button when using it</p>
     </div>
   )
-//   function prePage(){
-//     if(currentPage !== 1) {
-//         setCurrentPage(currentPage - 1);
-//     }
-//   }
-//   function changeCPage(id){
-//     setCurrentPage(id);
-//   }
-//   function nextPage(id){
-//     if(currentPage !== npage){
-//         setCurrentPage(currentPage + 1)
-//     }
-//   }
+  function prePage(){
+    if(currentPage !== 1) {
+        setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCPage(id){
+    setCurrentPage(id);
+  }
+  function nextPage(id){
+    if(currentPage !== npage){
+        setCurrentPage(currentPage + 1)
+    }
+  }
 }
 
 export default Notes
