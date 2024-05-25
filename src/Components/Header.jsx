@@ -1,8 +1,11 @@
 import React from 'react'
 
+
 const Header = () => {
   return (
-    <div>Header</div>
+    <div className='header'>
+        <h1 className='title'>Notes</h1>
+    </div>
   )
 }
 

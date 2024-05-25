@@ -1,0 +1,21 @@
+body{
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  min-height: 100vh;
+}
+
+.header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
