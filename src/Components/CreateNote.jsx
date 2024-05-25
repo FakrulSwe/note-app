@@ -14,15 +14,6 @@ const CreateNote = ({inputTitle, inputText, setInputText, setInputTitle, saveHan
         onChange={(e) => setInputTitle(e.target.value)}
         maxLength={25}
         />
-        {/* <textarea className='fs-6'
-        cols={10}
-        rows={5}
-        placeholder='Type...'
-        value={inputTitle}
-        onChange={(e) => setInputTitle(e.target.value)}
-        maxLength={25}
-        >
-        </textarea> */}
         <p className='fs-5'>Description</p>
         <textarea className='fs-6'
         cols={10}

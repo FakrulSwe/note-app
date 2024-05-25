@@ -7,6 +7,7 @@ import Note from './Note'
 
 const Notes = () => {
     const data = JSON.parse(localStorage.getItem("Notes"))
+    // Pagination
     const [currentPage, setCurrentPage] = useState(1)
     const recordsPerpage = 5;
     const lastIndex = currentPage * recordsPerpage;
@@ -14,7 +15,7 @@ const Notes = () => {
     const records = data.slice(firstIndex, lastIndex);
     const npage = Math.ceil(data.length/recordsPerpage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
-    
+    // --------
     const [inputTitle, setInputTitle] = useState('')
     const [inputText, setInputText] = useState('')
     const [notes, setNotes] = useState([])
@@ -125,7 +126,8 @@ const Notes = () => {
                 </ul>
             </nav>
         </div>
-        <p className='text-warning fw-bold font-light paginationbottom mt-2'>Note: Please double-click the &nbsp;<span className='text-danger'> Save </span> &nbsp; button when using it</p>
+        <p className='text-warning fw-bold font-light paginationbottom mt-2'>Note: Please double-click the &nbsp;
+        <span className='text-danger'> Save & Delete </span> &nbsp; button when using it</p>
     </div>
   )
   function prePage(){
