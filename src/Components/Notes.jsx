@@ -61,7 +61,7 @@ const Notes = () => {
     const recordsPerpage = 5;
     const lastIndex = currentPage * recordsPerpage;
     const firstIndex = lastIndex - recordsPerpage;
-    const records = data.slice(firstIndex, lastIndex);
+    // const records = data.slice(firstIndex, lastIndex);
     const npage = Math.ceil(data.length/recordsPerpage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
     // --------
